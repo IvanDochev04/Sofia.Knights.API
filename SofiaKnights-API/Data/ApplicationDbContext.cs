@@ -7,12 +7,14 @@ using System.Text;
 
 namespace SofiaKnights_API.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
+
+        public DbSet<Player> Players { get; set; } 
 
         public DbSet<Team> Teams { get; set; }
 
@@ -21,5 +23,11 @@ namespace SofiaKnights_API.Data
         public DbSet<PlayerInfo> PlayerInfos { get; set; }
 
         public DbSet<News> News { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
     }
+
 }

@@ -4,8 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SofiaKnights_API.Data.Models
 {
-    public class User : IdentityUser
+    public class Player 
     {
+        public int Id { get; set; }
 
         public string FullName { get; set; }
 
