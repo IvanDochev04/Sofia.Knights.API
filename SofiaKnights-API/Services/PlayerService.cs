@@ -61,7 +61,6 @@ namespace SofiaKnights_API.Services
 
             var player = new Player()
             {
-                Id = playerDTO.Id,
                 FullName = playerDTO.FullName,
                 NickName = playerDTO.NickName,
                 BirthDay = playerDTO.BirthDay,
@@ -87,7 +86,7 @@ namespace SofiaKnights_API.Services
 
             var player = this.playersRepository.GetById(playerDTO.Id);
 
-            player.Id = playerDTO.Id;
+            
             player.FullName = playerDTO.FullName;
             player.NickName = playerDTO.NickName;
             player.BirthDay = playerDTO.BirthDay;
