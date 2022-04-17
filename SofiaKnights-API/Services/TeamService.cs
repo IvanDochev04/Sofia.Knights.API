@@ -64,7 +64,7 @@ namespace SofiaKnights_API.Services
             team.Name = teamDTO.Name;
             team.LogoUrl = teamDTO.LogoUrl;
 
-            var updatedTeam = repository.Update(team);
+            var updatedTeam = this.repository.Update(team);
             return updatedTeam.Id;
         }
 

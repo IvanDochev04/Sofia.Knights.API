@@ -10,24 +10,23 @@ namespace SofiaKnights_API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class TeamController : ControllerBase
+    public class FixtureController : ControllerBase
     {
-        private readonly ITeamService teamService;
+        private readonly IFixtureService fixtureService;
 
-        public TeamController(ITeamService teamsService)
+        public FixtureController(IFixtureService fixtureService)
         {
-            this.teamService = teamsService;
+            this.fixtureService = fixtureService;
         }
-
         [Route("all")]
         [HttpGet]
-        public IActionResult GetAllTeams()
+        public IActionResult GetAllFixtures()
         {
             try
             {
-                var teams = this.teamService.GetTeamsList();
+                var fixtures = this.fixtureService.GetFixtureList();
 
-                return Ok(teams);
+                return Ok(fixtures);
             }
             catch (Exception ex)
             {
@@ -36,19 +35,18 @@ namespace SofiaKnights_API.Controllers
 
         }
 
-        [Route("{teamId}")]
+        [Route("{fixtureId}")]
         [HttpGet]
-        public IActionResult GetTeamById(int teamId)
+        public IActionResult GetTeamById(int fixtureId)
         {
             try
             {
-                var team = this.teamService.GetTeamById(teamId);
-                return Ok(team);
+                var fixture = this.fixtureService.GetFixtureById(fixtureId);
 
+                return Ok(fixture);
             }
             catch (Exception ex)
             {
-
                 return BadRequest(ex.Message);
             }
         }
@@ -56,13 +54,13 @@ namespace SofiaKnights_API.Controllers
 
         [Route("create")]
         [HttpPost]
-        public IActionResult CreateTeam(TeamDTO model)
+        public IActionResult CreateFixture(CreateFixtureDTO model)
         {
             try
             {
-                var teamId = this.teamService.CreateTeam(model);
-                var team = this.teamService.GetTeamById(teamId);
-                return Ok(team);
+                var fixtureId = this.fixtureService.CreateFixture(model);
+                var fixture = this.fixtureService.GetFixtureById(fixtureId);
+                return Ok(fixture);
             }
             catch (Exception ex)
             {
@@ -74,13 +72,13 @@ namespace SofiaKnights_API.Controllers
 
         [Route("update")]
         [HttpPut]
-        public IActionResult UpdateTeam(TeamDTO model)
+        public IActionResult UpdateFixture(FixtureDTO model)
         {
             try
             {
-                var teamId = this.teamService.UpdateTeam(model);
-                var team = this.teamService.GetTeamById(teamId);
-                return Ok(team);
+                var fixtureId = this.fixtureService.UpdateFixture(model);
+                var fixture = this.fixtureService.GetFixtureById(fixtureId);
+                return Ok(fixture);
             }
             catch (Exception ex)
             {
@@ -89,13 +87,13 @@ namespace SofiaKnights_API.Controllers
             }
         }
 
-        [Route("{teamId}")]
+        [Route("{fixtureId}")]
         [HttpDelete]
-        public IActionResult DeleteTeam(int teamId)
+        public IActionResult DeleteTeam(int fixtureId)
         {
             try
             {
-                this.teamService.DeleteTeam(teamId);
+                this.fixtureService.DeleteFixture(fixtureId);
                 return Ok("Successful delete.");
             }
             catch (Exception ex)

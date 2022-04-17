@@ -55,8 +55,9 @@ namespace SofiaKnights_API.Controllers
         {
             try
             {
-                var player = this.playerService.CreatePlayer(model);
-                return Ok(model);
+                var playerId = this.playerService.CreatePlayer(model);
+                var player = this.playerService.GetPlayerById(playerId);
+                return Ok(player);
             }
             catch (Exception ex)
             {
@@ -72,8 +73,9 @@ namespace SofiaKnights_API.Controllers
         {
             try
             {
-                var player = this.playerService.UpdatePlayer(model);
-                return Ok(model);
+                var playerId = this.playerService.UpdatePlayer(model);
+                var player = this.playerService.GetPlayerById(playerId);
+                return Ok(player);
             }
             catch (Exception ex)
             {
