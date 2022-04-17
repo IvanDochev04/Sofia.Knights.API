@@ -51,7 +51,7 @@ namespace SofiaKnights_API
             services.AddScoped<IRepository<Team>, TeamsRepository>();
 
             services.AddScoped<IPlayerService, PlayerService>();
-            services.AddScoped<ITeamsService, TeamsService>();
+            services.AddScoped<ITeamService, TeamService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

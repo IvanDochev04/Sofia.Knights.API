@@ -2,28 +2,32 @@
 using SofiaKnights_API.DTOs;
 using SofiaKnights_API.Services.Interfaces;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace SofiaKnights_API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class PlayerController : ControllerBase
+    public class TeamController : ControllerBase
     {
-        private readonly IPlayerService playerService;
+        private readonly ITeamService teamService;
 
-        public PlayerController(IPlayerService playerService)
+        public TeamController(ITeamService teamsService)
         {
-            this.playerService = playerService;
+            this.teamService = teamsService;
         }
+
         [Route("all")]
         [HttpGet]
-        public IActionResult GetAllPlayers()
+        public IActionResult GetAllTeams()
         {
             try
             {
-                var players = this.playerService.GetPlayersList();
+                var teams = this.teamService.GetTeamsList();
 
-                return Ok(players);
+                return Ok(teams);
             }
             catch (Exception ex)
             {
@@ -32,14 +36,15 @@ namespace SofiaKnights_API.Controllers
 
         }
 
-        [Route("{playerId}")]
+        [Route("{teamId}")]
         [HttpGet]
-        public IActionResult GetPlayerById(int playerId)
+        public IActionResult GetTeamById(int teamId)
         {
             try
             {
-                var player = this.playerService.GetPlayerById(playerId);
-                return Ok(player);
+                var team = this.teamService.GetTeamById(teamId);
+                return Ok(team);
+
             }
             catch (Exception ex)
             {
@@ -51,11 +56,11 @@ namespace SofiaKnights_API.Controllers
 
         [Route("create")]
         [HttpPost]
-        public IActionResult CreatePlayer(PlayerDTO model)
+        public IActionResult CreateTeam(TeamDTO model)
         {
             try
             {
-                var player = this.playerService.CreatePlayer(model);
+                var team = this.teamService.CreateTeam(model);
                 return Ok(model);
             }
             catch (Exception ex)
@@ -68,11 +73,11 @@ namespace SofiaKnights_API.Controllers
 
         [Route("update")]
         [HttpPut]
-        public IActionResult UpdatePlayer(PlayerDTO model)
+        public IActionResult UpdateTeam(TeamDTO model)
         {
             try
             {
-                var player = this.playerService.UpdatePlayer(model);
+                var team = this.teamService.UpdateTeam(model);
                 return Ok(model);
             }
             catch (Exception ex)
@@ -82,13 +87,13 @@ namespace SofiaKnights_API.Controllers
             }
         }
 
-        [Route("{playerId}")]
+        [Route("{teamId}")]
         [HttpDelete]
-        public IActionResult DeletePlayer(int playerId)
+        public IActionResult DeleteTeam(int teamId)
         {
             try
             {
-                this.playerService.DeletePlayer(playerId);
+                this.teamService.DeleteTeam(teamId);
                 return Ok("Successful delete.");
             }
             catch (Exception ex)

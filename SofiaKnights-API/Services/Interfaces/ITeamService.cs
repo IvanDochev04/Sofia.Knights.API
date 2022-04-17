@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SofiaKnights_API.Services.Interfaces
 {
-    public interface ITeamsService
+    public interface ITeamService
     {
         public List<TeamDTO> GetTeamsList();
 

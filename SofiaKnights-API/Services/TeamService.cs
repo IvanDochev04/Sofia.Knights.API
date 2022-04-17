@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace SofiaKnights_API.Services
 {
-    public class TeamsService : ITeamsService
+    public class TeamService : ITeamService
     {
         private readonly IRepository<Team> repository;
 
-        public TeamsService(IRepository<Team> repository)
+        public TeamService(IRepository<Team> repository)
         {
             this.repository = repository;
         }
@@ -53,16 +53,16 @@ namespace SofiaKnights_API.Services
                 Name = teamDTO.Name,
                 LogoUrl = teamDTO.LogoUrl
             };
-           var createdTeam = this.repository.Create(team);
+            var createdTeam = this.repository.Create(team);
             return createdTeam.Id;
         }
 
         public int UpdateTeam(TeamDTO teamDTO)
         {
             var team = this.repository.GetById(teamDTO.Id);
-         
-                team.Name = teamDTO.Name;
-                team.LogoUrl = teamDTO.LogoUrl;
+
+            team.Name = teamDTO.Name;
+            team.LogoUrl = teamDTO.LogoUrl;
 
             var updatedTeam = repository.Update(team);
             return updatedTeam.Id;
