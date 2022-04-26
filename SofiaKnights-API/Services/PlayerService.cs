@@ -2,6 +2,7 @@
 using SofiaKnights_API.Data.Repositories.Interfaces;
 using SofiaKnights_API.DTOs;
 using SofiaKnights_API.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 
 namespace SofiaKnights_API.Services
@@ -41,7 +42,7 @@ namespace SofiaKnights_API.Services
                 Id = player.Id,
                 FullName = player.FullName,
                 NickName = player.NickName,
-                BirthDay = player.BirthDay,
+                BirthDay = player.BirthDay.Date.ToString("d"),
                 Nationality = player.Nationality,
                 SelfDiscription = player.SelfDiscription,
                 Height = player.PlayerInfo.Height,
@@ -63,7 +64,7 @@ namespace SofiaKnights_API.Services
             {
                 FullName = playerDTO.FullName,
                 NickName = playerDTO.NickName,
-                BirthDay = playerDTO.BirthDay,
+                BirthDay = DateTime.Parse(playerDTO.BirthDay),
                 Nationality = playerDTO.Nationality,
                 SelfDiscription = playerDTO.SelfDiscription,
 
@@ -89,7 +90,7 @@ namespace SofiaKnights_API.Services
             
             player.FullName = playerDTO.FullName;
             player.NickName = playerDTO.NickName;
-            player.BirthDay = playerDTO.BirthDay;
+            player.BirthDay = DateTime.Parse(playerDTO.BirthDay);
             player.Nationality = playerDTO.Nationality;
             player.SelfDiscription = playerDTO.SelfDiscription;
             player.PlayerInfo.Height = playerDTO.Height;

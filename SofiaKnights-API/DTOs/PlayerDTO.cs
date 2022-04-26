@@ -13,7 +13,7 @@ namespace SofiaKnights_API.DTOs
 
         public string NickName { get; set; }
 
-        public DateTime BirthDay { get; set; }
+        public string BirthDay { get; set; }
 
         public string Nationality { get; set; }
 

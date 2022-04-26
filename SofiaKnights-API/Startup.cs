@@ -37,6 +37,16 @@ namespace SofiaKnights_API
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddCors(opt =>
+         opt.AddPolicy("ApiCorsPolicy", builder =>
+         {
+             {
+                 builder.WithOrigins(this.Configuration.GetSection("CorsOrigin").Value)
+                 .AllowCredentials()
+                 .AllowAnyHeader()
+                 .AllowAnyMethod();
+             }
+         }));
             services.AddControllers();
             services.AddHttpClient();
             services.AddSwaggerGen(c =>
@@ -52,6 +62,8 @@ namespace SofiaKnights_API
 
             services.AddScoped<IPlayerService, PlayerService>();
             services.AddScoped<ITeamService, TeamService>();
+            services.AddScoped<IFixtureService, FixtureService>();
+            services.AddScoped<INewsService, NewsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

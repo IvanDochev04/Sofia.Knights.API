@@ -30,7 +30,7 @@ namespace SofiaKnights_API.Services
                 {
                     Id = fixture.Id,
                     Location = fixture.Location,
-                    Date = fixture.Date.ToString("s"),
+                    Date = fixture.Date.ToString("f"),
                     HomeTeam = teams.Where(t => t.Id == fixture.HomeTeamId).FirstOrDefault(),
                     AwayTeam = teams.Where(t => t.Id == fixture.AwayTeamId).FirstOrDefault(),
                     HomePoints = fixture.HomePoints,
@@ -49,7 +49,7 @@ namespace SofiaKnights_API.Services
             {
                 Id = fixture.Id,
                 Location = fixture.Location,
-                Date = fixture.Date.ToString("s"),
+                Date = fixture.Date.ToString("f"),
                 HomeTeam = teams.Where(t => t.Id == fixture.HomeTeamId).FirstOrDefault(),
                 AwayTeam = teams.Where(t => t.Id == fixture.AwayTeamId).FirstOrDefault(),
                 HomePoints = fixture.HomePoints,
