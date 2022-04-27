@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SofiaKnights_API.DTOs;
 using SofiaKnights_API.Services.Interfaces;
 using System;
@@ -10,6 +11,7 @@ namespace SofiaKnights_API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class TeamController : ControllerBase
     {
         private readonly ITeamService teamService;
@@ -21,6 +23,7 @@ namespace SofiaKnights_API.Controllers
 
         [Route("all")]
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult GetAllTeams()
         {
             try
@@ -38,6 +41,7 @@ namespace SofiaKnights_API.Controllers
 
         [Route("{teamId}")]
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult GetTeamById(int teamId)
         {
             try

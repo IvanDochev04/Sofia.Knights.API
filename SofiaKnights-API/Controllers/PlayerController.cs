@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SofiaKnights_API.DTOs;
 using SofiaKnights_API.Services.Interfaces;
 using System;
@@ -7,6 +8,7 @@ namespace SofiaKnights_API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class PlayerController : ControllerBase
     {
         private readonly IPlayerService playerService;
@@ -17,6 +19,7 @@ namespace SofiaKnights_API.Controllers
         }
         [Route("all")]
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult GetAllPlayers()
         {
             try
@@ -34,6 +37,7 @@ namespace SofiaKnights_API.Controllers
 
         [Route("{playerId}")]
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult GetPlayerById(int playerId)
         {
             try

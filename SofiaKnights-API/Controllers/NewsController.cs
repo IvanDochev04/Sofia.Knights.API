@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SofiaKnights_API.DTOs;
 using SofiaKnights_API.Services.Interfaces;
 using System;
@@ -10,6 +11,7 @@ namespace SofiaKnights_API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class NewsController : ControllerBase
     {
         private readonly INewsService newsService;
@@ -20,6 +22,7 @@ namespace SofiaKnights_API.Controllers
         }
         [Route("all")]
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult GetAllNews()
         {
             try
@@ -37,6 +40,7 @@ namespace SofiaKnights_API.Controllers
 
         [Route("{newsId}")]
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult GetnNewsById(int newsId)
         {
             try

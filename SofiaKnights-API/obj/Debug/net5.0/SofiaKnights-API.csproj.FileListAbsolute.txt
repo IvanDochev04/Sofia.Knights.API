@@ -31,7 +31,6 @@ C:\Users\ivan.dochev\source\repos\SofiaKnights-API\SofiaKnights-API\bin\Debug\ne
 C:\Users\ivan.dochev\source\repos\SofiaKnights-API\SofiaKnights-API\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
 C:\Users\ivan.dochev\source\repos\SofiaKnights-API\SofiaKnights-API\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\ivan.dochev\source\repos\SofiaKnights-API\SofiaKnights-API\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
-C:\Users\ivan.dochev\source\repos\SofiaKnights-API\SofiaKnights-API\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\ivan.dochev\source\repos\SofiaKnights-API\SofiaKnights-API\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
 C:\Users\ivan.dochev\source\repos\SofiaKnights-API\SofiaKnights-API\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
 C:\Users\ivan.dochev\source\repos\SofiaKnights-API\SofiaKnights-API\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
@@ -70,3 +69,10 @@ C:\Users\ivan.dochev\source\repos\SofiaKnights-API\SofiaKnights-API\bin\Debug\ne
 C:\Users\ivan.dochev\source\repos\SofiaKnights-API\SofiaKnights-API\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\ivan.dochev\source\repos\SofiaKnights-API\SofiaKnights-API\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\ivan.dochev\source\repos\SofiaKnights-API\SofiaKnights-API\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\ivan.dochev\source\repos\SofiaKnights-API\SofiaKnights-API\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\ivan.dochev\source\repos\SofiaKnights-API\SofiaKnights-API\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\ivan.dochev\source\repos\SofiaKnights-API\SofiaKnights-API\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\ivan.dochev\source\repos\SofiaKnights-API\SofiaKnights-API\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+C:\Users\ivan.dochev\source\repos\SofiaKnights-API\SofiaKnights-API\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+C:\Users\ivan.dochev\source\repos\SofiaKnights-API\SofiaKnights-API\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\ivan.dochev\source\repos\SofiaKnights-API\SofiaKnights-API\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
