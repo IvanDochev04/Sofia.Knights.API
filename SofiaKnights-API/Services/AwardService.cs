@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SofiaKnights_API.Services
 {
-    public class AwardService: IAwardService
+    public class AwardService : IAwardService
     {
         private readonly IRepository<Award> repository;
 
@@ -30,7 +30,8 @@ namespace SofiaKnights_API.Services
                     Name = award.Name,
                     Description = award.Description,
                     PersonName = award.PersonName,
-                    Year = award.Year
+                    Year = award.Year,
+                    PictureUrl = award.PictureUrl
                 };
                 awardsToReturn.Add(awardDTO);
             }
@@ -45,7 +46,9 @@ namespace SofiaKnights_API.Services
                 Name = award.Name,
                 Description = award.Description,
                 PersonName = award.PersonName,
-                Year = award.Year
+                Year = award.Year,
+                PictureUrl = award.PictureUrl
+
             };
             return awardDTO;
         }
@@ -54,11 +57,11 @@ namespace SofiaKnights_API.Services
         {
             var award = new Award()
             {
-                Id = awardDTO.Id,
                 Name = awardDTO.Name,
                 Description = awardDTO.Description,
                 PersonName = awardDTO.PersonName,
-                Year = awardDTO.Year
+                Year = awardDTO.Year,
+                PictureUrl = awardDTO.PictureUrl
             };
             var createdAward = this.repository.Create(award);
             return createdAward.Id;
@@ -68,10 +71,12 @@ namespace SofiaKnights_API.Services
         {
             var award = this.repository.GetById(awardDTO.Id);
 
-           award. Name = awardDTO.Name;
-           award. Description = awardDTO.Description;
-           award. PersonName = awardDTO.PersonName;
-           award. Year = awardDTO.Year;
+            award.Name = awardDTO.Name;
+            award.Description = awardDTO.Description;
+            award.PersonName = awardDTO.PersonName;
+            award.Year = awardDTO.Year;
+            award.PictureUrl = awardDTO.PictureUrl;
+
 
             var updatedAward = this.repository.Update(award);
             return updatedAward.Id;

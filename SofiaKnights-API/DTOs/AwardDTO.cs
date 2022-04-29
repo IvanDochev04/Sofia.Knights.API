@@ -16,5 +16,7 @@ namespace SofiaKnights_API.DTOs
         public string Year { get; set; }
 
         public string PersonName { get; set; }
+
+        public string PictureUrl { get; set; }
     }
 }

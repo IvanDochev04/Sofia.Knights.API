@@ -16,5 +16,7 @@ namespace SofiaKnights_API.Data.Models
         public string Year { get; set; }
 
         public string PersonName { get; set; }
+
+        public string PictureUrl { get; set; }
     }
 }
