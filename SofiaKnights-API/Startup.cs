@@ -94,6 +94,8 @@ namespace SofiaKnights_API
             services.AddScoped<IRepository<Fixture>, FixturesRepository>();
             services.AddScoped<IRepository<Team>, TeamsRepository>();
             services.AddScoped<IRepository<Award>, AwardRepository>();
+            services.AddScoped<IRepository<Tactic>, TacticRepository>();
+
 
 
             services.AddScoped<IPlayerService, PlayerService>();
@@ -101,6 +103,8 @@ namespace SofiaKnights_API
             services.AddScoped<IFixtureService, FixtureService>();
             services.AddScoped<INewsService, NewsService>();
             services.AddScoped<IAwardService, AwardService>();
+            services.AddScoped<ITacticService, TacticService>();
+
 
         }
 

@@ -28,11 +28,14 @@ namespace SofiaKnights_API.Data
 
         public DbSet<Award> Awards { get; set; }
 
+        public DbSet<Tactic> Tactics { get; set; }
+
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-           // builder.ApplyConfiguration(new RoleConfiguration()); //add roles
+            builder.ApplyConfiguration(new RoleConfiguration()); //add roles
         }
     }
 

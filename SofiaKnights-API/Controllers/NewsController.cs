@@ -93,7 +93,7 @@ namespace SofiaKnights_API.Controllers
 
         [Route("{newsId}")]
         [HttpDelete]
-        public IActionResult DeleteTeam(int newsId)
+        public IActionResult DeleteNews(int newsId)
         {
             try
             {
