@@ -93,11 +93,15 @@ namespace SofiaKnights_API
             services.AddScoped<IRepository<News>, NewsRepository>();
             services.AddScoped<IRepository<Fixture>, FixturesRepository>();
             services.AddScoped<IRepository<Team>, TeamsRepository>();
+            services.AddScoped<IRepository<Award>, AwardRepository>();
+
 
             services.AddScoped<IPlayerService, PlayerService>();
             services.AddScoped<ITeamService, TeamService>();
             services.AddScoped<IFixtureService, FixtureService>();
             services.AddScoped<INewsService, NewsService>();
+            services.AddScoped<IAwardService, AwardService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
