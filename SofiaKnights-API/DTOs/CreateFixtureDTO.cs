@@ -17,6 +17,6 @@ namespace SofiaKnights_API.DTOs
 
         public int AwayPoints { get; set; }
 
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
     }
 }

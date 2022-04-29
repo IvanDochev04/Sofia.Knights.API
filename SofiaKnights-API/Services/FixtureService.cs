@@ -62,7 +62,7 @@ namespace SofiaKnights_API.Services
             var fixture = new Fixture()
             {
                 Location = fixtureDTO.Location,
-                Date = fixtureDTO.Date,
+                Date = DateTime.Parse(fixtureDTO.Date),
                 HomeTeamId = fixtureDTO.HomeTeamId,
                 AwayTeamId = fixtureDTO.AwayTeamId,
                 HomePoints = fixtureDTO.HomePoints,
