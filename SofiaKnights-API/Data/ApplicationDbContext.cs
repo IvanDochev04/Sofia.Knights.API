@@ -26,6 +26,9 @@ namespace SofiaKnights_API.Data
 
         public DbSet<News> News { get; set; }
 
+        public DbSet<Award> Awards { get; set; }
+
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
