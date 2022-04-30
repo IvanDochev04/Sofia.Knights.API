@@ -88,6 +88,9 @@ namespace SofiaKnights_API
             });
 
             services.AddScoped<JwtHandler>();
+            services.AddScoped<ValidationService>();
+
+            
 
             services.AddScoped<IRepository<Player>, PlayerRepository>();
             services.AddScoped<IRepository<News>, NewsRepository>();

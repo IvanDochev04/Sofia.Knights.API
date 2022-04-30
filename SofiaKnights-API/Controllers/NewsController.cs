@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SofiaKnights_API.DTOs;
+using SofiaKnights_API.Services;
 using SofiaKnights_API.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,12 @@ namespace SofiaKnights_API.Controllers
     public class NewsController : ControllerBase
     {
         private readonly INewsService newsService;
+        private readonly ValidationService validationService;
 
-        public NewsController(INewsService newsService)
+        public NewsController(INewsService newsService, ValidationService validationService)
         {
-            this.newsService = newsService;  
+            this.newsService = newsService;
+            this.validationService = validationService;
         }
         [Route("all")]
         [HttpGet]
@@ -62,6 +65,10 @@ namespace SofiaKnights_API.Controllers
         {
             try
             {
+                if (validationService.IsAnyNullOrEmpty(model))
+                {
+                    throw new ArgumentException("One of the properties was null or empty!");
+                }
                 var newsId = this.newsService.CreateNews(model);
                 var news = this.newsService.GetNewsById(newsId);
                 return Ok(news);
@@ -80,6 +87,10 @@ namespace SofiaKnights_API.Controllers
         {
             try
             {
+                if (validationService.IsAnyNullOrEmpty(model))
+                {
+                    throw new ArgumentException("One of the properties was null or empty!");
+                }
                 var newsId = this.newsService.UpdateNews(model);
                 var news = this.newsService.GetNewsById(newsId);
                 return Ok(news);

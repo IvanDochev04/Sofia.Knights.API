@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SofiaKnights_API.DTOs;
+using SofiaKnights_API.Services;
 using SofiaKnights_API.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,12 @@ namespace SofiaKnights_API.Controllers
     public class FixtureController : ControllerBase
     {
         private readonly IFixtureService fixtureService;
+        private readonly ValidationService validationService;
 
-        public FixtureController(IFixtureService fixtureService)
+        public FixtureController(IFixtureService fixtureService,ValidationService validationService)
         {
             this.fixtureService = fixtureService;
+            this.validationService = validationService;
         }
         [Route("all")]
         [HttpGet]
@@ -62,6 +65,10 @@ namespace SofiaKnights_API.Controllers
         {
             try
             {
+                if (validationService.IsAnyNullOrEmpty(model))
+                {
+                    throw new ArgumentException("One of the properties was null or empty!");
+                }
                 var fixtureId = this.fixtureService.CreateFixture(model);
                 var fixture = this.fixtureService.GetFixtureById(fixtureId);
                 return Ok(fixture);
@@ -80,6 +87,10 @@ namespace SofiaKnights_API.Controllers
         {
             try
             {
+                if (validationService.IsAnyNullOrEmpty(model))
+                {
+                    throw new ArgumentException("One of the properties was null or empty!");
+                }
                 var fixtureId = this.fixtureService.UpdateFixture(model);
                 var fixture = this.fixtureService.GetFixtureById(fixtureId);
                 return Ok(fixture);

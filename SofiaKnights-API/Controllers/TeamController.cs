@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SofiaKnights_API.DTOs;
+using SofiaKnights_API.Services;
 using SofiaKnights_API.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,12 @@ namespace SofiaKnights_API.Controllers
     public class TeamController : ControllerBase
     {
         private readonly ITeamService teamService;
+        private readonly ValidationService validationService;
 
-        public TeamController(ITeamService teamsService)
+        public TeamController(ITeamService teamsService, ValidationService validationService)
         {
             this.teamService = teamsService;
+            this.validationService = validationService;
         }
 
         [Route("all")]
@@ -64,6 +67,10 @@ namespace SofiaKnights_API.Controllers
         {
             try
             {
+                if (validationService.IsAnyNullOrEmpty(model))
+                {
+                    throw new ArgumentException("One of the properties was null or empty!");
+                }
                 var teamId = this.teamService.CreateTeam(model);
                 var team = this.teamService.GetTeamById(teamId);
                 return Ok(team);
@@ -82,6 +89,10 @@ namespace SofiaKnights_API.Controllers
         {
             try
             {
+                if (validationService.IsAnyNullOrEmpty(model))
+                {
+                    throw new ArgumentException("One of the properties was null or empty!");
+                }
                 var teamId = this.teamService.UpdateTeam(model);
                 var team = this.teamService.GetTeamById(teamId);
                 return Ok(team);

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SofiaKnights_API.DTOs;
+using SofiaKnights_API.Services;
 using SofiaKnights_API.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,12 @@ namespace SofiaKnights_API.Controllers
     public class AwardController : ControllerBase
     {
         private readonly IAwardService awardService;
+        private readonly ValidationService validationService;
 
-        public AwardController(IAwardService awardService)
+        public AwardController(IAwardService awardService,ValidationService validationService)
         {
             this.awardService = awardService;
+            this.validationService = validationService;
         }
 
         [Route("all")]
@@ -29,7 +32,6 @@ namespace SofiaKnights_API.Controllers
             try
             {
                 var awards = this.awardService.GetAwardList();
-
                 return Ok(awards);
             }
             catch (Exception ex)
@@ -64,6 +66,10 @@ namespace SofiaKnights_API.Controllers
         {
             try
             {
+                if (validationService.IsAnyNullOrEmpty(model))
+                {
+                    throw new ArgumentException("One of the properties was null or empty!");
+                }
                 var awardId = this.awardService.CreateAward(model);
                 var award = this.awardService.GetAwardById(awardId);
                 return Ok(award);
@@ -82,6 +88,10 @@ namespace SofiaKnights_API.Controllers
         {
             try
             {
+                if (validationService.IsAnyNullOrEmpty(model))
+                {
+                    throw new ArgumentException("One of the properties was null or empty!");
+                }
                 var awardId = this.awardService.UpdateAward(model);
                 var award = this.awardService.GetAwardById(awardId);
                 return Ok(award);

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SofiaKnights_API.DTOs;
+using SofiaKnights_API.Services;
 using SofiaKnights_API.Services.Interfaces;
 using System;
 
@@ -12,10 +13,12 @@ namespace SofiaKnights_API.Controllers
     public class PlayerController : ControllerBase
     {
         private readonly IPlayerService playerService;
+        private readonly ValidationService validationService;
 
-        public PlayerController(IPlayerService playerService)
+        public PlayerController(IPlayerService playerService,ValidationService validationService)
         {
             this.playerService = playerService;
+            this.validationService = validationService;
         }
         [Route("all")]
         [HttpGet]
@@ -59,6 +62,10 @@ namespace SofiaKnights_API.Controllers
         {
             try
             {
+                if (validationService.IsAnyNullOrEmpty(model))
+                {
+                    throw new ArgumentException("One of the properties was null or empty!");
+                }
                 var playerId = this.playerService.CreatePlayer(model);
                 var player = this.playerService.GetPlayerById(playerId);
                 return Ok(player);
@@ -77,6 +84,10 @@ namespace SofiaKnights_API.Controllers
         {
             try
             {
+                if (validationService.IsAnyNullOrEmpty(model))
+                {
+                    throw new ArgumentException("One of the properties was null or empty!");
+                }
                 var playerId = this.playerService.UpdatePlayer(model);
                 var player = this.playerService.GetPlayerById(playerId);
                 return Ok(player);

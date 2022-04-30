@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SofiaKnights_API.DTOs;
+using SofiaKnights_API.Services;
 using SofiaKnights_API.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,12 @@ namespace SofiaKnights_API.Controllers
     public class TacticController : ControllerBase
     {
         private readonly ITacticService tacticService;
+        private readonly ValidationService validationService;
 
-        public TacticController(ITacticService newsService)
+        public TacticController(ITacticService tacticService, ValidationService validationService)
         {
             this.tacticService = tacticService;
+            this.validationService = validationService;
         }
         [Route("all")]
         [HttpGet]
@@ -62,6 +65,10 @@ namespace SofiaKnights_API.Controllers
         {
             try
             {
+                if (validationService.IsAnyNullOrEmpty(model))
+                {
+                    throw new ArgumentException("One of the properties was null or empty!");
+                }
                 var tacticId = this.tacticService.CreateTactic(model);
                 var tactic = this.tacticService.GetTacticById(tacticId);
                 return Ok(tactic);
@@ -80,6 +87,10 @@ namespace SofiaKnights_API.Controllers
         {
             try
             {
+                if (validationService.IsAnyNullOrEmpty(model))
+                {
+                    throw new ArgumentException("One of the properties was null or empty!");
+                }
                 var tacticId = this.tacticService.UpdateTactic(model);
                 var tactic = this.tacticService.GetTacticById(tacticId);
                 return Ok(tactic);
